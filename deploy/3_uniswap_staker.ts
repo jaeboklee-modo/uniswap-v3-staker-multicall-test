@@ -19,7 +19,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const factory = await get('V3-factory');
   const manager = await get('V3-nftManager');
 
-  const staker = await deploy('V3-Staker', {
+  const staker = await deploy('V3-staker', {
     contract: stakerArtifact,
     skipIfAlreadyDeployed: true,
     from: deployer,

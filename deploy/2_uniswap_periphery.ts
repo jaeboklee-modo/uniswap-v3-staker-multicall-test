@@ -35,23 +35,19 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
   });
 
-  const descriptorFactory = await hre.ethers.getContractFactory(
-    'NonfungibleTokenPositionDescriptor'
-  );
+  // const descriptorArtifact: ArtifactData = {
+  //   abi: DESCRIPTOR_ABI,
+  //   bytecode: DESCRIPTOR_BYTECODE,
+  // };
 
-  const descriptorArtifact: ArtifactData = {
-    abi: DESCRIPTOR_ABI,
-    bytecode: descriptorFactory.bytecode,
-  };
-
-  const descriptor = await deploy('V3-descriptor', {
-    contract: descriptorArtifact,
-    skipIfAlreadyDeployed: true,
-    from: deployer,
-    log: true,
-    libraries: { NFTDescriptor: nftDescriptor.address },
-    args: [weth.address],
-  });
+  // const descriptor = await deploy('V3-descriptor', {
+  //   contract: descriptorArtifact,
+  //   skipIfAlreadyDeployed: true,
+  //   from: deployer,
+  //   log: true,
+  //   libraries: { NFTDescriptor: nftDescriptor.address },
+  //   args: [weth.address],
+  // });
 
   const managerArtifact: ArtifactData = {
     abi: MANAGER_ABI,
@@ -63,6 +59,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     skipIfAlreadyDeployed: true,
     from: deployer,
     log: true,
+    // descriptor pkg has an issue.
     args: [factory.address, weth.address, weth.address],
   });
 };

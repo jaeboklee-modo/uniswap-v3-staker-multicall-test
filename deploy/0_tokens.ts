@@ -28,6 +28,20 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     from: deployer,
     log: true,
   });
+
+  await deploy('Token2', {
+    contract: 'Token',
+    skipIfAlreadyDeployed: true,
+    from: deployer,
+    log: true,
+  });
+
+  await deploy('RewardToken', {
+    contract: 'Token',
+    skipIfAlreadyDeployed: true,
+    from: deployer,
+    log: true,
+  });
 };
 
 export default func;
